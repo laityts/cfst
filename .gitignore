@@ -1,0 +1,10 @@
+# 忽略所有 .session 文件
+*.session
+
+# 忽略特定命名的 session 文件（例如 "my_session.session"）
+my_session.session
+
+# 忽略包含敏感信息的文件（如 API_ID 和 API_HASH）
+config.ini
+secrets.json
+.env
