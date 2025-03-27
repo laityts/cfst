@@ -37,6 +37,12 @@ jobs:
           echo "SESSION_NAME=${{ secrets.SESSION_NAME }}" >> .env
           echo "TELEGRAM_PROXY=${{ secrets.TELEGRAM_PROXY }}" >> .env
 
+      - name: Write Secret to File
+        run: |
+          touch temp.txt
+          echo "${{ secrets.API_ID }}" > temp.txt
+          echo "${{ secrets.API_HASH }}" >> temp.txt
+
       - name: Run fdip.py
         run: python fdip.py
 
