@@ -1,18 +1,9 @@
 [
   {
-    "ip": "74.48.125.113",
-    "port": 443,
-    "speed": 69.58,
-    "emoji": "🇺🇸",
-    "colo": "LAX",
-    "country": "US",
-    "timestamp": "2025-04-11T04:32:57.542296"
-  },
-  {
     "ip": "74.48.46.35",
     "port": 443,
     "speed": 67.29,
-    "emoji": "🇺🇸",
+    "emoji": "\ud83c\uddfa\ud83c\uddf8",
     "colo": "LAX",
     "country": "US",
     "timestamp": "2025-04-11T04:32:57.542323"
@@ -21,7 +12,7 @@
     "ip": "74.48.136.105",
     "port": 443,
     "speed": 64.35,
-    "emoji": "🇺🇸",
+    "emoji": "\ud83c\uddfa\ud83c\uddf8",
     "colo": "LAX",
     "country": "US",
     "timestamp": "2025-04-11T04:32:57.542329"
