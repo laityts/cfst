@@ -20,6 +20,14 @@ on:
         required: false
         default: ''
         type: string
+      allip:
+        description: '是否启用 -allip选项 '
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - true
+          - false
 
 jobs:
   cfst:
@@ -62,12 +70,18 @@ jobs:
 
     - name: Run cfst script based on ip_type
       run: |
-        # 使用条件判断处理可选参数
-        if [ -z "${{ github.event.inputs.ip_file }}" ]; then
-          python cfst.py -t ${{ github.event.inputs.ip_type }} -a
-        else
-          python cfst.py -t ${{ github.event.inputs.ip_type }} -a --ip-file "${{ github.event.inputs.ip_file }}"
-        fi
+        # 构建参数列表
+        args=()   
+        # 处理 -a 参数
+        if [[ "${{ github.event.inputs.allip }}" == "true" ]]; then
+          args+=("-a")
+        fi    
+        # 处理自定义IP文件参数
+        if [[ -n "${{ github.event.inputs.ip_file }}" ]]; then
+          args+=("--ip-file" "${{ github.event.inputs.ip_file }}")
+        fi    
+        # 执行命令
+        python cfst.py -t ${{ github.event.inputs.ip_type }} "${args[@]}"
 
     - name: Commit and push changes
       run: |
