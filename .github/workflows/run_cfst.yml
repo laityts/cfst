@@ -18,7 +18,7 @@ on:
       ip_file:  # 新增自定义 IP 文件参数
         description: '自定义 IP 列表文件路径（可选）'
         required: false
-        default: 'proxy.txt'
+        default: ''
         type: string
 
 jobs:
