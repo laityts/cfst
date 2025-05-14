@@ -135,10 +135,17 @@ class CFSpeedTester:
         # 结果文件存储路径
         self.results_dir = RESULTS_DIR / ip_type
         self.speed_dir = SPEED_DIR / ip_type
-        
+
         # 创建必要目录
         self.results_dir.mkdir(parents=True, exist_ok=True)
         self.speed_dir.mkdir(parents=True, exist_ok=True)
+
+        # 新增自定义 IP 文件路径处理
+        self.ip_file = Path(args.ip_file) if args.ip_file else BASE_DIR / f"{ip_type}.txt"
+        
+        # 验证文件是否存在
+        if not self.ip_file.exists():
+            raise FileNotFoundError(f"IP 列表文件不存在: {self.ip_file}")
 
     def _get_cfst_binary(self) -> Path:
         """获取对应平台的CFST测速二进制文件
@@ -239,7 +246,7 @@ class CFSpeedTester:
         # 构建命令参数
         cmd = [
             str(cfst_path),
-            "-f", str(ip_file),
+            "-f", str(self.ip_file),  # 修改此处使用实例变量
             "-o", str(result_file),
             "-url", "https://cloudflare.cdn.openbsd.org/pub/OpenBSD/7.3/src.tar.gz",  # 测速文件URL
             "-cfcolo", cfcolo,
@@ -458,6 +465,9 @@ def parse_arguments():
                         help="测速全部的IP（添加-allip参数到cfst命令）")
     parser.add_argument("--git-commit", action="store_true",
                         help="测试完成后提交结果到Git仓库")
+    parser.add_argument("--ip-file", type=str, 
+                      help="自定义IP列表文件路径（覆盖默认的 ip_type.txt）",
+                      default=None)
     return parser.parse_args()
 
 def main():

@@ -1,9 +1,9 @@
 name: Run cfst.py
 
 on:
-  # schedule:
-  #   - cron: '0 */12 * * *'
-  #   timezone: Asia/Shanghai
+  schedule:
+    # 使用 cron 语法设置定时任务 (UTC 时间)
+    - cron: '0 */2 * * *'  # 每隔2小时第0分钟执行一次
   workflow_dispatch:
     inputs:
       ip_type:
@@ -15,6 +15,11 @@ on:
           - ipv4
           - ipv6
           - proxy
+      ip_file:  # 新增自定义 IP 文件参数
+        description: '自定义 IP 列表文件路径（可选）'
+        required: false
+        default: 'proxy.txt'
+        type: string
 
 jobs:
   cfst:
@@ -57,7 +62,12 @@ jobs:
 
     - name: Run cfst script based on ip_type
       run: |
-        python cfst.py -t ${{ github.event.inputs.ip_type }} -a
+        # 使用条件判断处理可选参数
+        if [ -z "${{ github.event.inputs.ip_file }}" ]; then
+          python cfst.py -t ${{ github.event.inputs.ip_type }} -a
+        else
+          python cfst.py -t ${{ github.event.inputs.ip_type }} -a --ip-file "${{ github.event.inputs.ip_file }}"
+        fi
 
     - name: Commit and push changes
       run: |
