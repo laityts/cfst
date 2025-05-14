@@ -1,7 +1,0 @@
-2025-04-10 06:12:43,527 - root - INFO - [1m启动 IPV4 测试[0m
-2025-04-10 06:12:50,771 - root - INFO - [96m正在测试 FRA (端口: 443)...[0m
-2025-04-10 06:13:24,933 - root - INFO - [92m已保存最佳结果到: /data/data/com.termux/files/home/cfst/speed/ipv4/FRA.json[0m
-2025-04-10 06:13:24,934 - root - INFO - [写入FRA.txt] 104.18.19.223:443#🇩🇪DE┃⚡4.30MB/s
-2025-04-10 06:13:24,935 - root - INFO - [92m已生成节点信息文件: /data/data/com.termux/files/home/cfst/speed/ipv4/FRA.txt[0m
-2025-04-10 06:13:24,938 - root - INFO - [93m已清理旧文件: /data/data/com.termux/files/home/cfst/results/ipv4/FRA_20250410-045906.csv[0m
-2025-04-10 06:13:37,090 - root - INFO - [96m正在提交结果到Git仓库...[0m

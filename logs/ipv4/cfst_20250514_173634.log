@@ -1,0 +1,16 @@
+2025-05-14 17:36:34,423 - root - INFO - [1m启动 IPV4 测试[0m
+2025-05-14 17:36:39,132 - root - INFO - [96m正在测试 HKG (端口: 443)...[0m
+2025-05-14 17:36:56,758 - root - WARNING - [93m结果文件为空，删除: /data/data/com.termux/files/home/cfst/results/ipv4/HKG_20250514-173639.csv[0m
+2025-05-14 17:36:56,793 - root - INFO - [96m正在测试 LAX (端口: 443)...[0m
+2025-05-14 17:37:15,912 - root - WARNING - [93m结果文件为空，删除: /data/data/com.termux/files/home/cfst/results/ipv4/LAX_20250514-173656.csv[0m
+2025-05-14 17:37:15,920 - root - INFO - [96m正在测试 NRT (端口: 443)...[0m
+2025-05-14 17:37:34,152 - root - WARNING - [93m结果文件为空，删除: /data/data/com.termux/files/home/cfst/results/ipv4/NRT_20250514-173715.csv[0m
+2025-05-14 17:37:34,161 - root - INFO - [96m正在测试 SIN (端口: 443)...[0m
+2025-05-14 17:37:52,632 - root - WARNING - [93m结果文件为空，删除: /data/data/com.termux/files/home/cfst/results/ipv4/SIN_20250514-173734.csv[0m
+2025-05-14 17:37:52,633 - root - INFO - [96m正在测试 FRA (端口: 443)...[0m
+2025-05-14 17:38:11,014 - root - WARNING - [93m结果文件为空，删除: /data/data/com.termux/files/home/cfst/results/ipv4/FRA_20250514-173752.csv[0m
+2025-05-14 17:38:11,017 - root - INFO - [96m正在测试 ICN (端口: 443)...[0m
+2025-05-14 17:38:29,356 - root - WARNING - [93m结果文件为空，删除: /data/data/com.termux/files/home/cfst/results/ipv4/ICN_20250514-173811.csv[0m
+2025-05-14 17:38:29,359 - root - INFO - [96m正在测试 AMS (端口: 443)...[0m
+2025-05-14 17:38:47,997 - root - WARNING - [93m结果文件为空，删除: /data/data/com.termux/files/home/cfst/results/ipv4/AMS_20250514-173829.csv[0m
+2025-05-14 17:38:52,034 - root - INFO - [96m=== 测试流程结束 ===[0m

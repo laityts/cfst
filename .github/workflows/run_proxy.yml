@@ -2,17 +2,16 @@ name: Run proxy.py
 
 on:
   schedule:
-    # 使用 cron 语法设置定时任务 (UTC 时间)
-    - cron: '0 0 * * *'  # 每天0点0分执行一次
-  workflow_dispatch:        # 允许手动触发
+    - cron: '0 0 * * *'  # 每天 UTC 时间 0 点执行
+  workflow_dispatch:      # 允许手动触发
 
 jobs:
   proxy:
     runs-on: ubuntu-latest
     env:
-      TZ: Asia/Shanghai  # 设置为你本地的时区
+      TZ: Asia/Shanghai
     permissions:
-      contents: write  # 确保有权限推送代码
+      contents: write
 
     steps:
     - name: Checkout repository
@@ -44,19 +43,34 @@ jobs:
         echo "CF_ACCOUNT_ID=${{ secrets.CF_ACCOUNT_ID }}" >> .env
         echo "CF_KV_NAMESPACE_ID=${{ secrets.CF_KV_NAMESPACE_ID }}" >> .env
         echo "CF_API_TOKEN=${{ secrets.CF_API_TOKEN }}" >> .env
-    
+
     - name: Run proxy script
       run: |
         python scripts/proxy.py
+
+    - name: Check proxy.txt size
+      run: |
+        FILE_SIZE=$(stat -c%s "proxy.txt")
+        if [ $FILE_SIZE -le 10240 ]; then
+          echo "proxy.txt 大小仅为 ${FILE_SIZE} 字节（≤10KB），不提交该文件"
+          #rm -f proxy.txt  # 可选：直接删除小文件
+        else
+          echo "proxy.txt 大小为 ${FILE_SIZE} 字节（＞10KB），允许提交"
+        fi
 
     - name: Commit and push changes
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         if git diff --quiet; then
-          echo "No changes to commit."
+          echo "无变更需提交"
         else
           git add .
+          # 如果 proxy.txt 未被删除且大小≤10KB，从暂存区移除
+          if [ -f proxy.txt ] && [ $(stat -c%s "proxy.txt") -le 10240 ]; then
+            git reset HEAD proxy.txt
+            echo "已从提交中排除 proxy.txt"
+          fi
           git commit -m "Auto-Update proxy.txt - $(date +'%Y-%m-%d %H:%M:%S')"
           git push origin main
           git log -1 --stat
