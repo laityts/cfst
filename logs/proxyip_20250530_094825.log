@@ -1,6 +1,6 @@
-2025-05-29 09:50:39,112 - INFO - Connecting to 91.108.56.127:443/TcpFull...
-2025-05-29 09:50:39,333 - INFO - Connection to 91.108.56.127:443/TcpFull complete!
-2025-05-29 09:50:40,239 - ERROR - 运行时异常: EOF when reading a line
+2025-05-30 09:48:25,264 - INFO - Connecting to 91.108.56.127:443/TcpFull...
+2025-05-30 09:48:25,513 - INFO - Connection to 91.108.56.127:443/TcpFull complete!
+2025-05-30 09:48:26,535 - ERROR - 运行时异常: EOF when reading a line
 Traceback (most recent call last):
   File "/home/runner/work/cfst/cfst/scripts/proxy.py", line 196, in <module>
     asyncio.run(main())
