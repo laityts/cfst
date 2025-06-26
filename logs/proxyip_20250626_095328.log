@@ -1,0 +1,19 @@
+2025-06-26 09:53:28,025 - INFO - Connecting to 91.108.56.127:443/TcpFull...
+2025-06-26 09:53:28,267 - INFO - Connection to 91.108.56.127:443/TcpFull complete!
+2025-06-26 09:53:29,455 - ERROR - 运行时异常: EOF when reading a line
+Traceback (most recent call last):
+  File "/home/runner/work/cfst/cfst/scripts/proxy.py", line 196, in <module>
+    asyncio.run(main())
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "/home/runner/work/cfst/cfst/scripts/proxy.py", line 54, in main
+    async with TelegramClient(SESSION_NAME, API_ID, API_HASH) as client:
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages/telethon/client/auth.py", line 669, in __aenter__
+    return await self.start()
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages/telethon/client/auth.py", line 167, in _start
+    value = phone()
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages/telethon/client/auth.py", line 22, in <lambda>
+    phone: typing.Union[typing.Callable[[], str], str] = lambda: input('Please enter your phone (or bot token): '),
+EOFError: EOF when reading a line
