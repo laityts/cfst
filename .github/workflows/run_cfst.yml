@@ -3,7 +3,7 @@ name: Run cfst.py
 on:
   schedule:
     # 使用 cron 语法设置定时任务 (UTC 时间)
-    - cron: '0 */2 * * *'  # 每隔2小时第0分钟执行一次
+    #- cron: '0 */2 * * *'  # 每隔2小时第0分钟执行一次
   workflow_dispatch:
     inputs:
       ip_type:
