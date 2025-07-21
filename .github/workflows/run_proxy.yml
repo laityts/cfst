@@ -2,7 +2,7 @@ name: Run proxy.py
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # 每天 UTC 时间 0 点执行
+    #- cron: '0 0 * * *'  # 每天 UTC 时间 0 点执行
   workflow_dispatch:      # 允许手动触发
 
 jobs:
